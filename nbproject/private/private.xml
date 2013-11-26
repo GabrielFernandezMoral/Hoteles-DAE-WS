@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/raul/Practicas/DAE/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/servicios/ServicioOperador.java</file>
-            <file>file:/home/raul/Practicas/DAE/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/beans/BeanOperador.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/GitHub/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/anotacionaop/AOP.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/GitHub/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/servicios/ServicioAdministrador.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/GitHub/Hoteles-DAE-WS/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Gabriel/Documents/GitHub/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/servicios/ServicioOperador.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/GitHub/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/servicios/ServicioHotel.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/GitHub/Hoteles-DAE-WS/src/java/es/ujaen/dae/gabri_raul/hoteles/beans/BeanOperador.java</file>
         </group>
     </open-files>
 </project-private>
