@@ -103,7 +103,9 @@ public class UsuarioDAO {
         List<Usuario> lista = em.createQuery("Select u from Usuario u").getResultList();
 
         for (Usuario usuario : lista) {
-            usuarios.put(usuario.getDni(), usuario);
+            if (!"00000000A".equals(usuario.getDni())) {
+                usuarios.put(usuario.getDni(), usuario);
+            }
         }
         return usuarios;
     }
