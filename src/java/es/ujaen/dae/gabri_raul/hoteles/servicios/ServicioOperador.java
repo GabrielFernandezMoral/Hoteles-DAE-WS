@@ -12,9 +12,13 @@ import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorPersistir;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioNoEncontrado;
+import es.ujaen.dae.gabri_raul.hoteles.modelos.Hotel;
 import es.ujaen.dae.gabri_raul.hoteles.modelos.Operador;
 import es.ujaen.dae.gabri_raul.hoteles.modelos.Reserva;
 import es.ujaen.dae.gabri_raul.hoteles.modelos.Usuario;
+import es.ujaen.dae.localidadescercanas.Ciudad;
+import es.ujaen.dae.localidadescercanas.CiudadInexistente_Exception;
+import es.ujaen.dae.localidadescercanas.LocalidadesCercanas;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +26,10 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import es.ujaen.dae.localidadescercanas.LocalidadesCercanasService;
+import es.ujaen.dae.localidadescercanas.RadioIncorrecto_Exception;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Servicio para el Operador
@@ -64,7 +72,32 @@ public class ServicioOperador {
 
     @WebMethod
     public List consultaCiudad(String ciudad) {
-        return new ArrayList(operador.consultaCiudad(ciudad).values());
+
+        LocalidadesCercanasService localidadesWS = new LocalidadesCercanasService();
+        LocalidadesCercanas localidades = localidadesWS.getLocalidadesCercanasPort();
+
+        List<Ciudad> ciudades = new ArrayList();
+        try {
+            ciudades = localidades.ciudadesCercanas(ciudad, 20);
+        } catch (CiudadInexistente_Exception | RadioIncorrecto_Exception ex) {
+            Logger.getLogger(ServicioOperador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        List<Hotel> hoteles = new ArrayList();
+        List<Hotel> cercanos = new ArrayList();
+        for (Ciudad c : ciudades) {
+            System.out.println(c.getNombre());
+
+            if (c.getNombre().equals(ciudad)) {
+                hoteles.addAll(operador.consultaCiudad(ciudad).values());
+            } else {
+                cercanos.addAll(operador.consultaCiudad(c.getNombre()).values());
+            }
+        }
+        hoteles.add(new Hotel());
+        hoteles.addAll(cercanos);
+
+        return hoteles;
     }
 
     @WebMethod
