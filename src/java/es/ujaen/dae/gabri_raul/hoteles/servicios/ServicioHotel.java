@@ -6,6 +6,7 @@ import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorBloquear;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorReserva;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelNoEncontrado;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoPosible;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.jws.WebMethod;
@@ -27,7 +28,7 @@ public class ServicioHotel {
 
     @WebMethod
     public List consultarReservas(String nombreHotel) {
-        return (List) hotel.consultarReservas(nombreHotel).values();
+        return new ArrayList(hotel.consultarReservas(nombreHotel).values());
     }
 
     @WebMethod

@@ -1,7 +1,6 @@
 package es.ujaen.dae.gabri_raul.hoteles.modelos;
 
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoPosible;
-import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorPersistir;
 import java.io.Serializable;
 import java.util.*;
 import javax.persistence.CascadeType;
@@ -11,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Clase utilizada para crear hoteles
@@ -34,6 +34,7 @@ public class Hotel implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     @MapKey
+    @XmlTransient
     private Map<Integer, Reserva> reservas;
 
     /**
