@@ -25,12 +25,12 @@ public class Hotel implements Serializable {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private Integer numSimples;
-    private Integer numDobles;
-    private Integer numTriples;
-    private Float precioSimples;
-    private Float precioDobles;
-    private Float precioTriples;
+    private int numSimples;
+    private int numDobles;
+    private int numTriples;
+    private float precioSimples;
+    private float precioDobles;
+    private float precioTriples;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     @MapKey
@@ -57,7 +57,7 @@ public class Hotel implements Serializable {
      * @param precioDobles
      * @param precioTriples
      */
-    public Hotel(String nombre, String direccion, String ciudad, Integer numSimples, Integer numDobles, Integer numTriples, Float precioSimples, Float precioDobles, Float precioTriples) {
+    public Hotel(String nombre, String direccion, String ciudad, int numSimples, int numDobles, int numTriples, float precioSimples, float precioDobles, float precioTriples) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -118,84 +118,84 @@ public class Hotel implements Serializable {
     /**
      * @return the numSimples
      */
-    public Integer getNumSimples() {
+    public int getNumSimples() {
         return numSimples;
     }
 
     /**
      * @param numSimples the numSimples to set
      */
-    public void setNumSimples(Integer numSimples) {
+    public void setNumSimples(int numSimples) {
         this.numSimples = numSimples;
     }
 
     /**
      * @return the numDobles
      */
-    public Integer getNumDobles() {
+    public int getNumDobles() {
         return numDobles;
     }
 
     /**
      * @param numDobles the numDobles to set
      */
-    public void setNumDobles(Integer numDobles) {
+    public void setNumDobles(int numDobles) {
         this.numDobles = numDobles;
     }
 
     /**
      * @return the numTriples
      */
-    public Integer getNumTriples() {
+    public int getNumTriples() {
         return numTriples;
     }
 
     /**
      * @param numTriples the numTriples to set
      */
-    public void setNumTriples(Integer numTriples) {
+    public void setNumTriples(int numTriples) {
         this.numTriples = numTriples;
     }
 
     /**
      * @return the precioSimples
      */
-    public Float getPrecioSimples() {
+    public float getPrecioSimples() {
         return precioSimples;
     }
 
     /**
      * @param precioSimples the precioSimples to set
      */
-    public void setPrecioSimples(Float precioSimples) {
+    public void setPrecioSimples(float precioSimples) {
         this.precioSimples = precioSimples;
     }
 
     /**
      * @return the precioDobles
      */
-    public Float getPrecioDobles() {
+    public float getPrecioDobles() {
         return precioDobles;
     }
 
     /**
      * @param precioDobles the precioDobles to set
      */
-    public void setPrecioDobles(Float precioDobles) {
+    public void setPrecioDobles(float precioDobles) {
         this.precioDobles = precioDobles;
     }
 
     /**
      * @return the precioTriples
      */
-    public Float getPrecioTriples() {
+    public float getPrecioTriples() {
         return precioTriples;
     }
 
     /**
      * @param precioTriples the precioTriples to set
      */
-    public void setPrecioTriples(Float precioTriples) {
+    public void setPrecioTriples(float precioTriples) {
         this.precioTriples = precioTriples;
     }
 
@@ -216,6 +216,7 @@ public class Hotel implements Serializable {
     /**
      * @return Devuelve un mapa con las reservas de este hotel.
      */
+    @XmlTransient
     public Map<Integer, Reserva> getReservas() {
         return reservas;
     }

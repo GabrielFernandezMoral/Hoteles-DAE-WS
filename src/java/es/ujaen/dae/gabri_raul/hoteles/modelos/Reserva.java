@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Clase utilizada para crear reservas
@@ -22,19 +24,21 @@ public class Reserva implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     @Temporal(TemporalType.DATE)
     private Date fechaEntrada;
     @Temporal(TemporalType.DATE)
     private Date fechaSalida;
-    private Integer simples;
-    private Integer dobles;
-    private Integer triples;
+    private int simples;
+    private int dobles;
+    private int triples;
 
     @ManyToOne
+    @XmlElement
     private Usuario usuario;
 
     @ManyToOne
+    @XmlElement
     private Hotel hotel;
 
     /**
@@ -55,7 +59,7 @@ public class Reserva implements Serializable {
      * @param triples
      * @param hotel
      */
-    public Reserva(Date fechaEntrada, Date fechaSalida, Integer simples, Integer dobles, Integer triples, Usuario usuario, Hotel hotel) {
+    public Reserva(Date fechaEntrada, Date fechaSalida, int simples, int dobles, int triples, Usuario usuario, Hotel hotel) {
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.simples = simples;
@@ -108,7 +112,7 @@ public class Reserva implements Serializable {
      *
      * @return the simples
      */
-    public Integer getSimples() {
+    public int getSimples() {
         return simples;
     }
 
@@ -127,7 +131,7 @@ public class Reserva implements Serializable {
      *
      * @return the dobles
      */
-    public Integer getDobles() {
+    public int getDobles() {
         return dobles;
     }
 
@@ -146,7 +150,7 @@ public class Reserva implements Serializable {
      *
      * @return the triples
      */
-    public Integer getTriples() {
+    public int getTriples() {
         return triples;
     }
 
@@ -165,6 +169,7 @@ public class Reserva implements Serializable {
      *
      * @return the usuario
      */
+    @XmlTransient
     public Usuario getUsuario() {
         return usuario;
     }
@@ -184,6 +189,7 @@ public class Reserva implements Serializable {
      *
      * @return the hotel
      */
+    @XmlTransient
     public Hotel getHotel() {
         return hotel;
     }
@@ -203,7 +209,7 @@ public class Reserva implements Serializable {
      *
      * @return the id
      */
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
