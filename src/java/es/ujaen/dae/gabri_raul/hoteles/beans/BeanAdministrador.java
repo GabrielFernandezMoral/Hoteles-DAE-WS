@@ -3,10 +3,12 @@ package es.ujaen.dae.gabri_raul.hoteles.beans;
 import es.ujaen.dae.gabri_raul.hoteles.dao.AdministradorDAO;
 import es.ujaen.dae.gabri_raul.hoteles.dao.HotelDAO;
 import es.ujaen.dae.gabri_raul.hoteles.dao.OperadorDAO;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorPersistir;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelNoEncontrado;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorPersistir;
@@ -140,34 +142,34 @@ public class BeanAdministrador {
      * Modifica un operador del sistema.
      *
      * @param operador
-     * @throws OperadorErrorEliminar
-     * @throws OperadorErrorPersistir
+     * @throws es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorActualizar
      */
-    public void modificarOperador(Operador operador) throws OperadorErrorEliminar, OperadorErrorPersistir {
-        Operador op = operadorDAO.buscar(operador.getCif());
-        if (op!=null){
-            operadorDAO.eliminar(op);
-            op.setDireccionSocial(operador.getDireccionSocial());
-            op.setNombre(operador.getNombre());
-            operadorDAO.insertar(op);
-        }
+    public void modificarOperador(Operador operador) throws OperadorErrorActualizar {
+//        Operador op = operadorDAO.buscar(operador.getCif());
+//        if (op!=null){
+//            operadorDAO.eliminar(op);
+//            op.setDireccionSocial(operador.getDireccionSocial());
+//            op.setNombre(operador.getNombre());
+//            operadorDAO.insertar(op);
+//        }
+        operadorDAO.actualizar(operador);
     }
     
     /**
      * Modifica un hotel del sistema.
      *
      * @param hotel
-     * @throws HotelErrorEliminar
-     * @throws HotelErrorPersistir
+     * @throws es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorActualizar
      */
-    public void modificarHotel(Hotel hotel) throws HotelErrorEliminar, HotelErrorPersistir {
-        Hotel h = hotelDAO.buscar(hotel.getNombre());
-        if (h!=null){
-            hotelDAO.eliminar(h);
-            h.setDireccion(hotel.getDireccion());
-            h.setNombre(hotel.getNombre());
-            hotelDAO.insertar(h);
-        }
+    public void modificarHotel(Hotel hotel) throws HotelErrorActualizar {
+//        Hotel h = hotelDAO.buscar(hotel.getNombre());
+//        if (h!=null){
+//            hotelDAO.eliminar(h);
+//            h.setDireccion(hotel.getDireccion());
+//            h.setNombre(hotel.getNombre());
+//            hotelDAO.insertar(h);
+//        }
+        hotelDAO.actualizar(hotel);
     }
     
     /**
