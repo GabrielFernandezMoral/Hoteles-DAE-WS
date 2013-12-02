@@ -11,4 +11,5 @@
     <system systemId="https://jax-ws.java.net/spring/core.xsd" uri="jax-ws.java.net/spring/core.xsd"/>
     <system systemId="https://jax-ws.java.net/spring/servlet.xsd" uri="jax-ws.java.net/spring/servlet.xsd"/>
     <system systemId="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" uri="ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/index"/>
+    <system systemId="http://ehcache.org/ehcache.xsd" uri="ehcache.org/ehcache.xsd"/>
 </catalog>

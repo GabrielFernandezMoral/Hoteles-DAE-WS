@@ -4,6 +4,9 @@ import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorPersistir;
 import es.ujaen.dae.gabri_raul.hoteles.modelos.Operador;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -88,5 +91,20 @@ public class OperadorDAO {
         } catch (Exception e) {
             throw new OperadorErrorEliminar();
         }
+    }
+    
+    /**
+     * Listado de todos los operadores.
+     *
+     * @return Devuelve un map con todos los operadores.
+     */
+    public Map<String, Operador> listar() {
+        Map<String, Operador> operadores = new HashMap();
+        List<Operador> lista = em.createQuery("Select o from Operador o").getResultList();
+
+        for (Operador operador : lista) {
+            operadores.put(operador.getCif(), operador);
+        }
+        return operadores;
     }
 }

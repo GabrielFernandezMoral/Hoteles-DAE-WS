@@ -1,5 +1,6 @@
 package es.ujaen.dae.gabri_raul.hoteles.beans;
 
+import es.ujaen.dae.gabri_raul.hoteles.dao.AdministradorDAO;
 import es.ujaen.dae.gabri_raul.hoteles.dao.HotelDAO;
 import es.ujaen.dae.gabri_raul.hoteles.dao.OperadorDAO;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorDatos;
@@ -10,8 +11,10 @@ import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorPersistir;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorNoEncontrado;
+import es.ujaen.dae.gabri_raul.hoteles.modelos.Administrador;
 import es.ujaen.dae.gabri_raul.hoteles.modelos.Hotel;
 import es.ujaen.dae.gabri_raul.hoteles.modelos.Operador;
+import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +31,9 @@ public class BeanAdministrador {
 
     @Resource
     OperadorDAO operadorDAO;
+    
+    @Resource
+    AdministradorDAO administradorDAO;
 
     /**
      * Dar de alta un hotel.
@@ -83,6 +89,27 @@ public class BeanAdministrador {
             throw new OperadorErrorDatos();
         }
     }
+    
+    /**
+     * Dar de alta un operador.
+     *
+     * @param nombre
+     * @param direccionSocial
+     * @param cif
+     * @throws OperadorErrorPersistir
+     * @throws OperadorErrorDatos
+     */
+    public void altaOperador(String nombre, String direccionSocial, String cif) throws OperadorErrorPersistir, OperadorErrorDatos {
+        Operador operador = new Operador();
+        operador.setNombre(nombre);
+        operador.setDireccionSocial(direccionSocial);
+        operador.setCif(cif);
+        if (!operador.hasEmptyFields()) {
+            operadorDAO.insertar(operador);
+        } else {
+            throw new OperadorErrorDatos();
+        }
+    }
 
     /**
      * Devuelve el operador con el cif indicado.
@@ -107,6 +134,40 @@ public class BeanAdministrador {
             throw new OperadorNoEncontrado();
         }
         operadorDAO.eliminar(o);
+    }
+    
+    /**
+     * Devuelve un administrador si coincide con los datos para el login.
+     *
+     * @param id
+     * @param pass
+     * @return Devuelve un administrador
+     */
+    public Administrador login(String id, String pass) {
+//        if(id.equals("1234")){
+//            Administrador administrador=new Administrador("1234");
+//            return administrador;
+//        }
+//        return null;
+        return administradorDAO.buscar(id);
+    }
+    
+    /**
+     * Devuelve un mapa con la lista de operadores.
+     *
+     * @return Devuelve un mapa con la lista de operadores
+     */
+    public Map<String, Operador> listaOperadores() {
+        return operadorDAO.listar();
+    }
+    
+    /**
+     * Devuelve un mapa con la lista de hoteles.
+     *
+     * @return Devuelve un mapa con la lista de hoteles
+     */
+    public Map<String, Hotel> listaHoteles() {
+        return hotelDAO.listar();
     }
 
 }

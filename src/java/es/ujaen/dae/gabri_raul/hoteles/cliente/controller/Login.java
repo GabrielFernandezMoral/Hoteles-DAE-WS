@@ -4,9 +4,8 @@
  */
 package es.ujaen.dae.gabri_raul.hoteles.cliente.controller;
 
-import es.ujaen.dae.gabri_raul.hoteles.servicios.ServicioOperador;
-//import es.ujaen.dae.gabri_raul.hoteles.servicios.ServicioOperadorService;
-//import es.ujaen.dae.gabri_raul.hoteles.servicios.Operador;
+import es.ujaen.dae.gabri_raul.hoteles.beans.BeanAdministrador;
+import es.ujaen.dae.gabri_raul.hoteles.modelos.Administrador;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  *
@@ -35,22 +36,22 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-//        ServicioOperadorService operadorWS = new ServicioOperadorService();
-//        ServicioOperador servicioOperador = operadorWS.getServicioOperadorPort();
+        WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+        BeanAdministrador beanAdministrador = (BeanAdministrador) context.getBean("beanAdministrador");
 
         /// comprobaciones para redirigir
         if (request.getParameter("login") != null) {
             // hay que redirigir al controlador operador.
             // la añadir la contraseña
-//            Operador op = servicioOperador.login(request.getParameter("cif"), null);
-//
-//            if (op != null) {
-//                request.getSession().setAttribute("operador", op);
-//                response.sendRedirect("operador/listadousuarios");
-//            } else {
-//                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/login/index.jsp");
-//                rd.forward(request, response);
-//            }
+            Administrador administrador = beanAdministrador.login(request.getParameter("id"), null);
+
+            if (administrador != null) {
+                request.getSession().setAttribute("administrador", administrador);
+                response.sendRedirect("administrador/listadooperadores");
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/login/index.jsp");
+                rd.forward(request, response);
+            }
 
         } else {
 

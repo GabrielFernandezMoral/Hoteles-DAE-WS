@@ -157,4 +157,19 @@ public class HotelDAO {
         em.lock(em.contains(hotel) ? hotel : em.merge(hotel), LockModeType.OPTIMISTIC_FORCE_INCREMENT);
         em.flush();
     }
+    
+    /**
+     * Listado de todos los hoteles.
+     *
+     * @return Devuelve un map con todos los hoteles.
+     */
+    public Map<String, Hotel> listar() {
+        Map<String, Hotel> hoteles = new HashMap();
+        List<Hotel> lista = em.createQuery("Select h from Hotel h").getResultList();
+
+        for (Hotel hotel : lista) {
+            hoteles.put(hotel.getNombre(), hotel);
+        }
+        return hoteles;
+    }
 }

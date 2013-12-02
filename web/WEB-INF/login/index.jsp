@@ -14,7 +14,7 @@
 
     <form class="form-signin" method="post">
         <h2 class="form-signin-heading">Iniciar sesión</h2>
-        <input id="user" type="text" class="form-control" placeholder="Nombre de usuario" name="cif" value="${user.nombre}"/>
+        <input id="user" type="text" class="form-control" placeholder="Nombre de usuario" name="id" value="${user.nombre}"/>
         <input id="pass" type="password" class="form-control" placeholder="Contraseña" name="pass"/>
         <label id="remember" class="checkbox">
             <input type="checkbox" value="remember-me"> Recordarme
