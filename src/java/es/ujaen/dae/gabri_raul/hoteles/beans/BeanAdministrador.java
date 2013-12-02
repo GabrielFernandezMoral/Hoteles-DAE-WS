@@ -137,6 +137,40 @@ public class BeanAdministrador {
     }
     
     /**
+     * Modifica un operador del sistema.
+     *
+     * @param operador
+     * @throws OperadorErrorEliminar
+     * @throws OperadorErrorPersistir
+     */
+    public void modificarOperador(Operador operador) throws OperadorErrorEliminar, OperadorErrorPersistir {
+        Operador op = operadorDAO.buscar(operador.getCif());
+        if (op!=null){
+            operadorDAO.eliminar(op);
+            op.setDireccionSocial(operador.getDireccionSocial());
+            op.setNombre(operador.getNombre());
+            operadorDAO.insertar(op);
+        }
+    }
+    
+    /**
+     * Modifica un hotel del sistema.
+     *
+     * @param hotel
+     * @throws HotelErrorEliminar
+     * @throws HotelErrorPersistir
+     */
+    public void modificarHotel(Hotel hotel) throws HotelErrorEliminar, HotelErrorPersistir {
+        Hotel h = hotelDAO.buscar(hotel.getNombre());
+        if (h!=null){
+            hotelDAO.eliminar(h);
+            h.setDireccion(hotel.getDireccion());
+            h.setNombre(hotel.getNombre());
+            hotelDAO.insertar(h);
+        }
+    }
+    
+    /**
      * Devuelve un administrador si coincide con los datos para el login.
      *
      * @param id

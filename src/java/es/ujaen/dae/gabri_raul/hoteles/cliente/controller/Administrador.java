@@ -91,6 +91,11 @@ public class Administrador extends HttpServlet {
                 Operador operador = beanAdministrador.obtenerOperador(cif);
                 operador.setDireccionSocial(direccionSocial);
                 operador.setNombre(nombre);
+                try{
+                    beanAdministrador.modificarOperador(operador);
+                }catch(OperadorErrorEliminar | OperadorErrorPersistir ex){
+                    System.out.println("No se ha podido modificar el operador");
+                }
 
                 response.sendRedirect("/Hoteles-DAE-WS/administrador/listadooperadores");
 
@@ -172,6 +177,11 @@ public class Administrador extends HttpServlet {
                 hotel.setPrecioSimples(psimples);
                 hotel.setPrecioDobles(pdobles);
                 hotel.setPrecioTriples(ptriples);
+                try{
+                    beanAdministrador.modificarHotel(hotel);
+                }catch(HotelErrorEliminar | HotelErrorPersistir ex){
+                    System.out.println("No se ha podido modificar el hotel");
+                }
 
                 response.sendRedirect("/Hoteles-DAE-WS/administrador/listadohoteles");
 
