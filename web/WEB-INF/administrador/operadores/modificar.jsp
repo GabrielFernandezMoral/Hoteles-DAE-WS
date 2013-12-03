@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">CIF</label>
                 <div class="col-lg-6">
-                    <input type="text" name="cif" class="form-control" value="${operador.cif}"/> 
+                    <input type="text" name="cif" disabled="true" class="form-control" value="${operador.cif}"/> 
                 </div>
             </div>
             <div class="form-group">

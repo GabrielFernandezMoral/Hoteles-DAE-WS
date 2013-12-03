@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">Nombre</label>
                 <div class="col-lg-6">
-                    <input type="text" name="nombre" class="form-control" value="${hotel.nombre}"/> 
+                    <input type="text" name="nombre" disabled="true" class="form-control" value="${hotel.nombre}"/> 
                 </div>
             </div>
             <div class="form-group">
