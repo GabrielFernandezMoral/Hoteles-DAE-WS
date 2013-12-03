@@ -4,6 +4,7 @@ import es.ujaen.dae.gabri_raul.hoteles.beans.BeanOperador;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorBloquear;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelNoEncontrado;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorCambiarUsuario;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoEncontrada;
@@ -125,6 +126,11 @@ public class ServicioOperador {
     @WebMethod
     public void eliminarReserva(int id) throws HotelErrorActualizar, ReservaNoEncontrada {
         operador.eliminarReserva(id);
+    }
+    
+    @WebMethod
+    public void modificarReserva(int id, Date fechaEntrada, Date fechaSalida, Integer simples, Integer dobles, Integer triples, String hotel, String usuario) throws ReservaErrorActualizar{
+        operador.modificarReserva(id, fechaEntrada, fechaSalida, simples, dobles, triples, hotel, usuario);
     }
 
     @WebMethod

@@ -7,6 +7,7 @@ import es.ujaen.dae.gabri_raul.hoteles.dao.UsuarioDAO;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorBloquear;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelNoEncontrado;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorCambiarUsuario;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoEncontrada;
@@ -113,6 +114,29 @@ public class BeanOperador {
     public void modificarUsuario(String nombre, String dni, String direccion) throws UsuarioErrorActualizar {
         Usuario usuario = new Usuario(nombre, direccion, dni);
         usuarioDAO.actualizar(usuario);
+    }
+    
+    /**
+     * Modifica una reserva del sistema.
+     *
+     * @param id
+     * @param fechaEntrada
+     * @param fechaSalida
+     * @param simples
+     * @param dobles
+     * @param triples
+     * @param hotel
+     * @param usuario
+     * @throws es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorActualizar
+     */
+    public void modificarReserva(int id, Date fechaEntrada, Date fechaSalida, Integer simples, Integer dobles, Integer triples, String hotel, String usuario) throws ReservaErrorActualizar {
+        Reserva reserva = reservaDAO.buscar(id);
+        reserva.setSimples(simples);
+        reserva.setDobles(dobles);
+        reserva.setTriples(triples);
+        reserva.setFechaEntrada(fechaEntrada);
+        reserva.setFechaSalida(fechaSalida);
+        reservaDAO.actualizar(reserva);
     }
 
     /**
