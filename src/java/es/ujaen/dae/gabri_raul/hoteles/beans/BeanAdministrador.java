@@ -145,13 +145,6 @@ public class BeanAdministrador {
      * @throws es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorActualizar
      */
     public void modificarOperador(Operador operador) throws OperadorErrorActualizar {
-//        Operador op = operadorDAO.buscar(operador.getCif());
-//        if (op!=null){
-//            operadorDAO.eliminar(op);
-//            op.setDireccionSocial(operador.getDireccionSocial());
-//            op.setNombre(operador.getNombre());
-//            operadorDAO.insertar(op);
-//        }
         operadorDAO.actualizar(operador);
     }
     
@@ -162,13 +155,6 @@ public class BeanAdministrador {
      * @throws es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorActualizar
      */
     public void modificarHotel(Hotel hotel) throws HotelErrorActualizar {
-//        Hotel h = hotelDAO.buscar(hotel.getNombre());
-//        if (h!=null){
-//            hotelDAO.eliminar(h);
-//            h.setDireccion(hotel.getDireccion());
-//            h.setNombre(hotel.getNombre());
-//            hotelDAO.insertar(h);
-//        }
         hotelDAO.actualizar(hotel);
     }
     
@@ -180,11 +166,6 @@ public class BeanAdministrador {
      * @return Devuelve un administrador
      */
     public Administrador login(String id, String pass) {
-//        if(id.equals("1234")){
-//            Administrador administrador=new Administrador("1234");
-//            return administrador;
-//        }
-//        return null;
         return administradorDAO.buscar(id);
     }
     

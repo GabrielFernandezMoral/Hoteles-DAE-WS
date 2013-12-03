@@ -8,6 +8,7 @@ import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorCambiarUsuario;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoEncontrada;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoPosible;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorPersistir;
@@ -58,6 +59,11 @@ public class ServicioOperador {
     public void bajaUsuario(String dni)
             throws UsuarioErrorEliminar, UsuarioNoEncontrado, ReservaErrorCambiarUsuario {
         operador.bajaUsuario(dni);
+    }
+    
+    @WebMethod
+    public void modificarUsuario(String nombre, String dni, String direccion) throws UsuarioErrorActualizar{
+        operador.modificarUsuario(nombre, dni, direccion);
     }
 
     @WebMethod

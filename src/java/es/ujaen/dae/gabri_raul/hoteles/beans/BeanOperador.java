@@ -11,6 +11,7 @@ import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorCambiarUsuario;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoEncontrada;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.ReservaNoPosible;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorDefault;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorEliminar;
@@ -99,6 +100,19 @@ public class BeanOperador {
             }
         }
 
+    }
+    
+    /**
+     * Modifica un usuario del sistema.
+     *
+     * @param nombre
+     * @param dni
+     * @param direccion
+     * @throws es.ujaen.dae.gabri_raul.hoteles.excepciones.UsuarioErrorActualizar
+     */
+    public void modificarUsuario(String nombre, String dni, String direccion) throws UsuarioErrorActualizar {
+        Usuario usuario = new Usuario(nombre, direccion, dni);
+        usuarioDAO.actualizar(usuario);
     }
 
     /**

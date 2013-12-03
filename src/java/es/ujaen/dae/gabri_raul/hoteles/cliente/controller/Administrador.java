@@ -5,10 +5,12 @@
 package es.ujaen.dae.gabri_raul.hoteles.cliente.controller;
 
 import es.ujaen.dae.gabri_raul.hoteles.beans.BeanAdministrador;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelErrorPersistir;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.HotelNoEncontrado;
+import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorActualizar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorDatos;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorEliminar;
 import es.ujaen.dae.gabri_raul.hoteles.excepciones.OperadorErrorPersistir;
@@ -93,7 +95,7 @@ public class Administrador extends HttpServlet {
                 operador.setNombre(nombre);
                 try{
                     beanAdministrador.modificarOperador(operador);
-                }catch(OperadorErrorEliminar | OperadorErrorPersistir ex){
+                }catch(OperadorErrorActualizar ex){
                     System.out.println("No se ha podido modificar el operador");
                 }
 
@@ -179,7 +181,7 @@ public class Administrador extends HttpServlet {
                 hotel.setPrecioTriples(ptriples);
                 try{
                     beanAdministrador.modificarHotel(hotel);
-                }catch(HotelErrorEliminar | HotelErrorPersistir ex){
+                }catch(HotelErrorActualizar ex){
                     System.out.println("No se ha podido modificar el hotel");
                 }
 
