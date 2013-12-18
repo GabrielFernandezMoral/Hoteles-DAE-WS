@@ -4,12 +4,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Clase utilizada para crear usuarios
  *
  * @author Raúl & Gabri
  */
+@XmlRootElement
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {

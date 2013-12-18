@@ -4,11 +4,11 @@
     <service name="ServicioAdministrador">
       <implementation-class>es.ujaen.dae.gabri_raul.hoteles.servicios.ServicioAdministrador</implementation-class>
     </service>
-    <service name="ServicioOperador">
-      <implementation-class>es.ujaen.dae.gabri_raul.hoteles.servicios.ServicioOperador</implementation-class>
-    </service>
     <service name="ServicioHotel">
       <implementation-class>es.ujaen.dae.gabri_raul.hoteles.servicios.ServicioHotel</implementation-class>
+    </service>
+    <service name="ServicioOperador">
+      <implementation-class>es.ujaen.dae.gabri_raul.hoteles.servicios.ServicioOperador</implementation-class>
     </service>
   </services>
   <clients/>
